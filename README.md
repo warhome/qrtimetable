@@ -7,7 +7,7 @@ Built in react-native.
 - Authorization and data storage in Firebase, as well as in local storage
 - Displaying information about week modifier, highlighting the current lesson
 - Loading a schedule in a special json format
-- Loading with QR code
+- Share it with QR code
 - Dark mode :sunglasses:
 
 ## How to install
