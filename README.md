@@ -8,5 +8,5 @@ A simple cross-platform moblie class schedule app for students with a class buil
 
 Note that it's
 
-## How to install?
+## How to install
 You can always find the latest apk build  <a href="https://github.com/warhome/qrtimetable/blob/master/android/app/build/outputs/apk/release/app-release.apk">from this link</a>
