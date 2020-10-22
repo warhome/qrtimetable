@@ -4,8 +4,10 @@ Built in react-native.
 
 ## Features (in future)
 - In-app shedule builder
+- Displaying information about week modifier, highlighting the current lesson.
 - Loading a schedule in a special json format
-- 
+- Loading with QR code
+- Dark mode :sunglasses:
 
 Note that it's
 
