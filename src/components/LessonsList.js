@@ -1,7 +1,7 @@
 import React from 'react';
 import {Container, Content, List} from 'native-base';
 
-import Card from './Card';
+import Card from './LessonCard';
 
 const isActiveLessonTime = (currentTime, lessonTime) => {
   const [lessonTimeStart, lessonTimeEnd] = lessonTime.split('-');

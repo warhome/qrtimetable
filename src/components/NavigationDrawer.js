@@ -9,6 +9,11 @@ import {
   Icon,
 } from 'native-base';
 import {StyleSheet} from 'react-native';
+import openJsonFile from '../picker';
+
+const readJson = () => {
+  openJsonFile();
+};
 
 function NavigationDrawer({navigation}) {
   return (
@@ -44,12 +49,14 @@ function NavigationDrawer({navigation}) {
               <Icon type="MaterialIcons" name="code" style={styles.icon} />
               <Text style={styles.listText}>Ввести ссылку</Text>
             </ListItem>
-            <ListItem
-              onPress={() => navigation.navigate('Notifications')}
-              style={styles.listPadding}>
+
+            {/* Open JSON file */}
+            <ListItem onPress={() => readJson()} style={styles.listPadding}>
               <Icon type="MaterialIcons" name="folder" style={styles.icon} />
               <Text style={styles.listText}>из файла JSON</Text>
             </ListItem>
+            {/* / Open JSON file */}
+
             <ListItem
               onPress={() => navigation.navigate('Notifications')}
               style={styles.listPadding}>
@@ -122,8 +129,8 @@ const styles = StyleSheet.create({
     marginLeft: 45,
   },
   icon: {
-    scaleX: 0.8,
-    scaleY: 0.8,
+    // scaleX: 0.8,
+    // scaleY: 0.8,
     color: 'rgba(114, 45, 211, 0.87)',
   },
 });

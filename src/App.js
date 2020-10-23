@@ -25,6 +25,7 @@ function App() {
         <Drawer.Screen name="Main" component={Main} />
         <Drawer.Screen name="Home" component={HomeScreen} />
         <Drawer.Screen name="Notifications" component={NotificationsScreen} />
+        <Drawer.Screen name="Auth" component={NotificationsScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
   );

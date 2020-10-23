@@ -2,10 +2,11 @@ import React from 'react';
 import {StyleSheet} from 'react-native';
 
 import LessonsList from '../components/LessonsList';
-import MainAppBar from '../components/MainAppBar';
-import timeTable3_1 from '../constDB';
+import MainAppBar from '../components/AppBar';
 
-import {Container, Tab, Tabs, ScrollableTab} from 'native-base';
+import {Container, Tab, Tabs, ScrollableTab, Text} from 'native-base';
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const daysOfWeek = [
   'Понедельник',
@@ -15,8 +16,6 @@ const daysOfWeek = [
   'Пятница',
   'Суббота',
 ];
-
-const timeTable = timeTable3_1();
 
 const getDate = () => {
   let cashe = {};
@@ -32,6 +31,15 @@ const getDate = () => {
 };
 
 const Main = ({navigation}) => {
+  const getSelectedTimetable = async () => {
+    try {
+      const value = await AsyncStorage.getItem('@selectedTimetable');
+      setTimeTable(JSON.parse(JSON.parse(value)));
+    } catch (e) {
+      // error reading value
+    }
+    return;
+  };
   const memoDate = getDate();
   const [weekMod, setWeekMod] = React.useState(true);
   const [currentDay, setCurrentDay] = React.useState(memoDate().day);
@@ -42,6 +50,10 @@ const Main = ({navigation}) => {
     min: memoDate().min,
   });
 
+  const [timeTable, setTimeTable] = React.useState({});
+
+  console.log(timeTable);
+
   React.useEffect(() => {
     // Hack for working initial tab
     setTimeout(() => {
@@ -49,6 +61,7 @@ const Main = ({navigation}) => {
         ? setInitTab(initTab)
         : setInitTab(0);
     }, 0);
+    getSelectedTimetable();
   }, []);
 
   return (
@@ -83,7 +96,7 @@ const Main = ({navigation}) => {
               activeTextStyle={styles.mainColor}>
               <LessonsList
                 weekMod={weekMod ? 'odd' : 'edd'} // числитель или знаменатель
-                dayLessons={timeTable.lessons[item]}
+                dayLessons={timeTable.lessons ? timeTable.lessons[item] : []}
                 currentTime={currentTime}
                 isCurrentDayWeek={index === Number(currentDay)}
               />
