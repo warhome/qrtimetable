@@ -15,9 +15,21 @@ const readJson = () => {
   openJsonFile();
 };
 
+const menuItes = [
+  {name: 'Выбрать расписание', iconName: 'favorite'},
+  {name: 'Загрузить готовое', iconName: 'keyboard-arrow-down'},
+  {name: 'Ввести ссылку', iconName: 'code'},
+  {name: 'из файла JSON', iconName: 'folder-open', onPress: () => readJson()},
+  {name: 'Сканировать QR', iconName: 'camera-enhance'},
+  {name: 'Редактировать', iconName: 'keyboard-arrow-down'},
+  {name: 'Изменить пары', iconName: 'edit'},
+  {name: 'Удалить расписание', iconName: 'delete-forever'},
+  {name: 'Настройки приложения', iconName: 'settings'},
+];
+
 function NavigationDrawer({navigation}) {
   return (
-    <Container>
+    <Container style={styles.container}>
       <Content>
         {/* Header */}
         <Content style={styles.header}>
@@ -31,44 +43,24 @@ function NavigationDrawer({navigation}) {
         {/* Navigatiob List */}
         <Content style={styles.listContainer}>
           <List>
-            <ListItem
-              onPress={() => navigation.navigate('Notifications')}
-              style={styles.list}>
-              <Icon type="MaterialIcons" name="favorite" style={styles.icon} />
-              <Text style={styles.listText}>Выбрать расписание</Text>
-            </ListItem>
-            <ListItem
-              onPress={() => navigation.navigate('Notifications')}
-              style={styles.list}>
-              <Icon type="MaterialIcons" name="add" style={styles.icon} />
-              <Text style={styles.listText}>Загрузить готовое</Text>
-            </ListItem>
-            <ListItem
-              onPress={() => navigation.navigate('Notifications')}
-              style={styles.listPadding}>
-              <Icon type="MaterialIcons" name="code" style={styles.icon} />
-              <Text style={styles.listText}>Ввести ссылку</Text>
-            </ListItem>
-
-            {/* Open JSON file */}
-            <ListItem onPress={() => readJson()} style={styles.listPadding}>
-              <Icon type="MaterialIcons" name="folder" style={styles.icon} />
-              <Text style={styles.listText}>из файла JSON</Text>
-            </ListItem>
-            {/* / Open JSON file */}
-
-            <ListItem
-              onPress={() => navigation.navigate('Notifications')}
-              style={styles.listPadding}>
-              <Icon type="MaterialIcons" name="camera" style={styles.icon} />
-              <Text style={styles.listText}>Сканировать QR</Text>
-            </ListItem>
-            <ListItem
-              onPress={() => navigation.navigate('Notifications')}
-              style={styles.list}>
-              <Icon type="MaterialIcons" name="settings" style={styles.icon} />
-              <Text style={styles.listText}>Настройки приложения</Text>
-            </ListItem>
+            {menuItes.map((item, index) => {
+              return (
+                <ListItem
+                  onPress={item.onPress}
+                  style={
+                    index === 0 || index === 1 || index === 5 || index === 8
+                      ? styles.list
+                      : styles.listPadding
+                  }>
+                  <Icon
+                    type="MaterialIcons"
+                    name={item.iconName}
+                    style={styles.icon}
+                  />
+                  <Text style={styles.listText}>{item.name}</Text>
+                </ListItem>
+              );
+            })}
           </List>
           {/* / Navigatiob List */}
         </Content>
@@ -77,23 +69,28 @@ function NavigationDrawer({navigation}) {
   );
 }
 const styles = StyleSheet.create({
+  container: {
+    width: 270,
+  },
   header: {
     flexDirection: 'row',
     paddingLeft: 16,
-    height: 160,
+    height: 110,
     borderBottomColor: 'rgba(0, 0, 0, 0.12)',
     borderBottomWidth: 1,
   },
   headerText: {
+    fontFamily: 'rubik_normal',
     color: '#722DD3',
     fontStyle: 'normal',
     fontWeight: '500',
     fontSize: 20,
     lineHeight: 24,
     letterSpacing: 0.15,
-    paddingTop: 100,
+    paddingTop: 50,
   },
   userText: {
+    fontFamily: 'rubik_normal',
     color: '#722DD3',
     fontWeight: '100',
     fontSize: 10,

@@ -2,7 +2,8 @@ import React from 'react';
 
 import Main from './screens/Main';
 import HomeScreen from './screens/HomeScreen';
-import NotificationsScreen from './screens/NotificationsScreen';
+import Auth from './screens/Auth';
+
 import NavigationDrawer from './components/NavigationDrawer';
 
 import SplashScreen from 'react-native-splash-screen';
@@ -24,8 +25,8 @@ function App() {
         drawerContent={(props) => <NavigationDrawer {...props} />}>
         <Drawer.Screen name="Main" component={Main} />
         <Drawer.Screen name="Home" component={HomeScreen} />
-        <Drawer.Screen name="Notifications" component={NotificationsScreen} />
-        <Drawer.Screen name="Auth" component={NotificationsScreen} />
+        <Drawer.Screen name="Notifications" component={Main} />
+        <Drawer.Screen name="Auth" component={Auth} />
       </Drawer.Navigator>
     </NavigationContainer>
   );

@@ -8,6 +8,8 @@ import {Container, Tab, Tabs, ScrollableTab, Text} from 'native-base';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+const SELECTED_TIMETABLE_FLAG = '@selectedTimetable';
+
 const daysOfWeek = [
   'Понедельник',
   'Вторник',
@@ -31,15 +33,20 @@ const getDate = () => {
 };
 
 const Main = ({navigation}) => {
+  // TODO: Async storage with onChange listener (StorageFacade)
+  // [storageFacade, setStorageFacade] = React.useState(null);
   const getSelectedTimetable = async () => {
     try {
-      const value = await AsyncStorage.getItem('@selectedTimetable');
-      setTimeTable(JSON.parse(JSON.parse(value)));
+      const value = await AsyncStorage.getItem(SELECTED_TIMETABLE_FLAG);
+      if (value != null) {
+        setTimeTable(JSON.parse(JSON.parse(value)));
+        // setStorageFacade(StorageFacade());
+      }
     } catch (e) {
       // error reading value
     }
-    return;
   };
+
   const memoDate = getDate();
   const [weekMod, setWeekMod] = React.useState(true);
   const [currentDay, setCurrentDay] = React.useState(memoDate().day);
@@ -49,10 +56,7 @@ const Main = ({navigation}) => {
     hours: memoDate().hours,
     min: memoDate().min,
   });
-
   const [timeTable, setTimeTable] = React.useState({});
-
-  console.log(timeTable);
 
   React.useEffect(() => {
     // Hack for working initial tab
@@ -109,16 +113,6 @@ const Main = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
-  title: {
-    fontStyle: 'normal',
-    fontWeight: '500',
-    fontSize: 20,
-    lineHeight: 24,
-    /* identical to box height */
-    letterSpacing: 0.15,
-    color: 'rgba(103, 0, 250, 0.87)',
-  },
-
   scroll: {
     paddingStart: 35,
     backgroundColor: '#ffffff',
@@ -127,15 +121,12 @@ const styles = StyleSheet.create({
   },
 
   mainColor: {
-    color: 'rgba(114, 45, 211, 0.65)',
-  },
-
-  modifBtn: {
-    color: 'rgba(114, 45, 211, 0.65)',
-    paddingTop: 5,
+    fontFamily: 'rubik_light',
+    color: '#9C56FF',
   },
 
   unactiveTab: {
+    fontFamily: 'rubik_light',
     color: 'rgba(83, 83, 83, 0.6)',
   },
 
@@ -144,7 +135,7 @@ const styles = StyleSheet.create({
   },
 
   underLine: {
-    backgroundColor: 'rgba(114, 45, 211, 0.65)',
+    backgroundColor: 'rgba(138, 55, 255, 0.75)',
     height: 2,
   },
 

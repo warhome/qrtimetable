@@ -31,10 +31,10 @@ async function openJsonFile() {
     //Handling any exception (If any)
     if (DocumentPicker.isCancel(err)) {
       //If user canceled the document selection
-      alert('Canceled from single doc picker');
+      alert('Действие было отменено');
     } else {
       //For Unknown Error
-      alert('Unknown Error: ' + JSON.stringify(err));
+      alert('Ошибка: ' + JSON.stringify(err));
       throw err;
     }
   }

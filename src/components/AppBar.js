@@ -10,6 +10,7 @@ import {
   Icon,
   Title,
   Text,
+  View,
 } from 'native-base';
 
 function MainAppBar({navigation, weekMod, setWeekMod}) {
@@ -23,7 +24,7 @@ function MainAppBar({navigation, weekMod, setWeekMod}) {
       <Body>
         <Title style={(styles.mainColor, styles.title)}>QRTimetable</Title>
       </Body>
-      <Right>
+      <Right style={styles.right}>
         <Button
           transparent
           style={styles.optionbtn}
@@ -32,6 +33,7 @@ function MainAppBar({navigation, weekMod, setWeekMod}) {
             {weekMod ? 'ЧИСЛИТЕЛЬ' : 'ЗНАМЕНАТЕЛЬ'}
           </Text>
         </Button>
+        <View style={weekMod ? styles.markerEven : styles.markerOdd}></View>
       </Right>
     </Header>
   );
@@ -47,22 +49,44 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    fontStyle: 'normal',
+    height: 25,
+    fontFamily: 'rubik_medium',
     fontWeight: '500',
     fontSize: 20,
     lineHeight: 24,
     letterSpacing: 0.15,
-    color: 'rgba(103, 0, 250, 0.87)',
+    color: 'rgba(138, 55, 255, 0.75)',
   },
 
   optionbtn: {
-    marginEnd: 10,
+    height: 20,
     width: 160,
+    textAlign: 'center',
+    marginTop: 3,
   },
 
   modifBtn: {
-    color: 'rgba(114, 45, 211, 0.65)',
+    color: 'rgba(138, 55, 255, 0.75)',
     paddingTop: 5,
+    fontFamily: 'rubik_medium',
+    textAlign: 'center',
+  },
+
+  right: {
+    flexDirection: 'column',
+  },
+
+  markerEven: {
+    height: 2,
+    width: 50,
+    backgroundColor: 'rgba(103, 0, 250, 0.87)',
+    marginRight: 55,
+  },
+  markerOdd: {
+    height: 2,
+    width: 70,
+    backgroundColor: 'rgba(103, 0, 250, 0.87)',
+    marginRight: 35,
   },
 });
 

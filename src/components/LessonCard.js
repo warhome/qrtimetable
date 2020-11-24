@@ -61,8 +61,9 @@ const styles = StyleSheet.create({
   },
 
   timeText: {
+    fontFamily: 'rubik_regular',
     fontSize: 15,
-    color: '#9C56FF',
+    color: 'rgba(156, 86, 255, 0.75)',
     marginStart: 12,
     marginVertical: 12,
   },
@@ -78,9 +79,10 @@ const styles = StyleSheet.create({
   },
 
   weekMod: {
+    fontFamily: 'rubik_regular',
     marginTop: 12,
     marginStart: 20,
-    color: '#9C56FF',
+    color: 'rgba(156, 86, 255, 0.75)',
   },
 
   weekRoom: {
@@ -90,16 +92,18 @@ const styles = StyleSheet.create({
   },
 
   lessonName: {
-    marginTop: 8,
+    fontFamily: 'roboto_medium',
+    marginTop: 6,
     marginStart: 20,
-    color: '#9C56FF',
+    color: 'rgba(156, 86, 255, 0.75)',
     fontSize: 18,
   },
 
   lessonTeacher: {
-    marginTop: 4,
+    fontFamily: 'rubik_regular',
+    marginTop: 8,
     marginStart: 20,
-    color: '#9C56FF',
+    color: 'rgba(156, 86, 255, 0.75)',
     fontSize: 14,
   },
 });
