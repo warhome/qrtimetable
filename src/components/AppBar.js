@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
+import {useTheme} from '@react-navigation/native';
 
 import {
   Header,
@@ -12,8 +13,62 @@ import {
   Text,
   View,
 } from 'native-base';
+import {color} from 'react-native-reanimated';
 
 function MainAppBar({navigation, weekMod, setWeekMod}) {
+  const {colors} = useTheme();
+
+  const styles = StyleSheet.create({
+    header: {
+      backgroundColor: colors.header,
+    },
+
+    mainColor: {
+      color: colors.text,
+    },
+
+    title: {
+      height: 25,
+      fontFamily: 'rubik_medium',
+      fontWeight: '500',
+      fontSize: 20,
+      lineHeight: 24,
+      letterSpacing: 0.15,
+      color: colors.text,
+    },
+
+    optionbtn: {
+      height: 20,
+      width: 160,
+      textAlign: 'center',
+      marginTop: 3,
+    },
+
+    modifBtn: {
+      color: colors.text,
+      paddingTop: 5,
+      fontFamily: 'rubik_medium',
+      textAlign: 'center',
+    },
+
+    right: {
+      flexDirection: 'column',
+    },
+
+    markerOdd: {
+      height: 2,
+      width: 50,
+      backgroundColor: colors.accent,
+      marginRight: 55,
+    },
+    markerEven: {
+      height: 2,
+      width: 70,
+      backgroundColor: colors.accent,
+      marginRight: 35,
+    },
+  });
+
   return (
     <Header style={styles.header} noShadow>
       <Left>
@@ -30,7 +85,7 @@ function MainAppBar({navigation, weekMod, setWeekMod}) {
           style={styles.optionbtn}
           onPress={() => setWeekMod(!weekMod)}>
           <Text style={styles.modifBtn}>
-            {weekMod ? 'ЧИСЛИТЕЛЬ' : 'ЗНАМЕНАТЕЛЬ'}
+            {weekMod ? 'ЗНАМЕНАТЕЛЬ' : 'ЧИСЛИТЕЛЬ'}
           </Text>
         </Button>
         <View style={weekMod ? styles.markerEven : styles.markerOdd}></View>
@@ -38,56 +93,5 @@ function MainAppBar({navigation, weekMod, setWeekMod}) {
     </Header>
   );
 }
-
-const styles = StyleSheet.create({
-  header: {
-    backgroundColor: '#ffffff',
-  },
-
-  mainColor: {
-    color: 'rgba(114, 45, 211, 0.65)',
-  },
-
-  title: {
-    height: 25,
-    fontFamily: 'rubik_medium',
-    fontWeight: '500',
-    fontSize: 20,
-    lineHeight: 24,
-    letterSpacing: 0.15,
-    color: 'rgba(138, 55, 255, 0.75)',
-  },
-
-  optionbtn: {
-    height: 20,
-    width: 160,
-    textAlign: 'center',
-    marginTop: 3,
-  },
-
-  modifBtn: {
-    color: 'rgba(138, 55, 255, 0.75)',
-    paddingTop: 5,
-    fontFamily: 'rubik_medium',
-    textAlign: 'center',
-  },
-
-  right: {
-    flexDirection: 'column',
-  },
-
-  markerEven: {
-    height: 2,
-    width: 50,
-    backgroundColor: 'rgba(103, 0, 250, 0.87)',
-    marginRight: 55,
-  },
-  markerOdd: {
-    height: 2,
-    width: 70,
-    backgroundColor: 'rgba(103, 0, 250, 0.87)',
-    marginRight: 35,
-  },
-});
 
 export default MainAppBar;

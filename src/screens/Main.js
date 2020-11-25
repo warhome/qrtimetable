@@ -1,6 +1,7 @@
 import React from 'react';
+import {StatusBar} from 'react-native';
 import {StyleSheet} from 'react-native';
-
+import {useTheme} from '@react-navigation/native';
 import LessonsList from '../components/LessonsList';
 import MainAppBar from '../components/AppBar';
 
@@ -33,6 +34,49 @@ const getDate = () => {
 };
 
 const Main = ({navigation}) => {
+  const {colors} = useTheme();
+  const styles = StyleSheet.create({
+    container: {
+      backgroundColor: colors.back,
+    },
+    scroll: {
+      paddingStart: 35,
+      backgroundColor: colors.back,
+      borderTopWidth: 1,
+      borderColor: colors.backDark,
+    },
+
+    mainColor: {
+      fontFamily: 'rubik_light',
+      color: colors.text,
+    },
+
+    unactiveTab: {
+      fontFamily: 'rubik_light',
+      color: colors.textUnactive,
+    },
+
+    header: {
+      backgroundColor: colors.back,
+    },
+
+    underLine: {
+      backgroundColor: colors.accent,
+      height: 2,
+    },
+
+    optionbtn: {
+      marginEnd: 10,
+      width: 160,
+    },
+
+    tab: {
+      color: colors.text,
+      backgroundColor: colors.back,
+    },
+  });
+  StatusBar.setBarStyle('light-content', true);
+  StatusBar.setBackgroundColor('red');
   // TODO: Async storage with onChange listener (StorageFacade)
   // [storageFacade, setStorageFacade] = React.useState(null);
   const getSelectedTimetable = async () => {
@@ -48,7 +92,7 @@ const Main = ({navigation}) => {
   };
 
   const memoDate = getDate();
-  const [weekMod, setWeekMod] = React.useState(true);
+  const [weekMod, setWeekMod] = React.useState(false);
   const [currentDay, setCurrentDay] = React.useState(memoDate().day);
   const [currentTab, setCurrentTab] = React.useState(false);
   const [initTab, setInitTab] = React.useState(memoDate().day);
@@ -76,6 +120,7 @@ const Main = ({navigation}) => {
         setWeekMod={setWeekMod}
       />
       <Tabs
+        tabBarBackgroundColor={colors.back}
         initialPage={Number(initTab)}
         renderTabBar={() => (
           <ScrollableTab
@@ -88,6 +133,7 @@ const Main = ({navigation}) => {
         {daysOfWeek.map((item, index) => {
           return (
             <Tab
+              style={styles.header}
               key={item}
               textStyle={styles.unactiveTab}
               heading={
@@ -111,38 +157,5 @@ const Main = ({navigation}) => {
     </Container>
   );
 };
-
-const styles = StyleSheet.create({
-  scroll: {
-    paddingStart: 35,
-    backgroundColor: '#ffffff',
-    borderTopWidth: 1,
-    borderColor: 'rgba(0, 0, 0, 0.12)',
-  },
-
-  mainColor: {
-    fontFamily: 'rubik_light',
-    color: '#9C56FF',
-  },
-
-  unactiveTab: {
-    fontFamily: 'rubik_light',
-    color: 'rgba(83, 83, 83, 0.6)',
-  },
-
-  header: {
-    backgroundColor: '#ffffff',
-  },
-
-  underLine: {
-    backgroundColor: 'rgba(138, 55, 255, 0.75)',
-    height: 2,
-  },
-
-  optionbtn: {
-    marginEnd: 10,
-    width: 160,
-  },
-});
 
 export default Main;

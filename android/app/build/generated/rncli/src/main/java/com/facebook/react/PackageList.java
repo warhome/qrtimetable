@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 // @react-native-community/masked-view
 import org.reactnative.maskedview.RNCMaskedViewPackage;
+// react-native-appearance
+import io.expo.appearance.RNCAppearancePackage;
 // react-native-document-picker
 import io.github.elyx0.reactnativedocumentpicker.DocumentPickerPackage;
 // react-native-fs
@@ -76,6 +78,7 @@ public class PackageList {
       new MainReactPackage(mConfig),
       new AsyncStoragePackage(),
       new RNCMaskedViewPackage(),
+      new RNCAppearancePackage(),
       new DocumentPickerPackage(),
       new RNFSPackage(),
       new RNGestureHandlerPackage(),

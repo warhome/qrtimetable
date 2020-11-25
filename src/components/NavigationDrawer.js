@@ -1,4 +1,6 @@
 import React from 'react';
+import {useTheme} from '@react-navigation/native';
+
 import {
   Button,
   Container,
@@ -28,6 +30,73 @@ const menuItes = [
 ];
 
 function NavigationDrawer({navigation}) {
+  const {colors} = useTheme();
+
+  const styles = StyleSheet.create({
+    container: {
+      width: 270,
+      backgroundColor: colors.back,
+    },
+    header: {
+      flexDirection: 'row',
+      paddingLeft: 16,
+      height: 110,
+      borderBottomColor: colors.backDark,
+      borderBottomWidth: 1,
+    },
+    headerText: {
+      fontFamily: 'rubik_normal',
+      color: colors.text,
+      fontStyle: 'normal',
+      fontWeight: '500',
+      fontSize: 20,
+      lineHeight: 24,
+      letterSpacing: 0.15,
+      paddingTop: 50,
+    },
+    userText: {
+      fontFamily: 'rubik_normal',
+      color: colors.text,
+      fontWeight: '100',
+      fontSize: 10,
+      lineHeight: 16,
+      letterSpacing: 0.15,
+    },
+    loginBtn: {
+      left: 0,
+      paddingStart: 200,
+      paddingBottom: 30,
+    },
+    listContainer: {
+      paddingTop: 10,
+    },
+    listText: {
+      fontStyle: 'normal',
+      fontWeight: 'normal',
+      fontSize: 14,
+      lineHeight: 20,
+
+      letterSpacing: 0.25,
+
+      color: colors.text,
+      paddingLeft: 20,
+    },
+    list: {
+      height: 40,
+      borderBottomWidth: 0,
+    },
+    listPadding: {
+      height: 40,
+      borderBottomWidth: 0,
+      marginLeft: 45,
+    },
+    icon: {
+      // scaleX: 0.8,
+      // scaleY: 0.8,
+      color: colors.text,
+    },
+  });
+
   return (
     <Container style={styles.container}>
       <Content>
@@ -68,68 +137,5 @@ function NavigationDrawer({navigation}) {
     </Container>
   );
 }
-const styles = StyleSheet.create({
-  container: {
-    width: 270,
-  },
-  header: {
-    flexDirection: 'row',
-    paddingLeft: 16,
-    height: 110,
-    borderBottomColor: 'rgba(0, 0, 0, 0.12)',
-    borderBottomWidth: 1,
-  },
-  headerText: {
-    fontFamily: 'rubik_normal',
-    color: '#722DD3',
-    fontStyle: 'normal',
-    fontWeight: '500',
-    fontSize: 20,
-    lineHeight: 24,
-    letterSpacing: 0.15,
-    paddingTop: 50,
-  },
-  userText: {
-    fontFamily: 'rubik_normal',
-    color: '#722DD3',
-    fontWeight: '100',
-    fontSize: 10,
-    lineHeight: 16,
-    letterSpacing: 0.15,
-  },
-  loginBtn: {
-    left: 0,
-    paddingStart: 200,
-    paddingBottom: 30,
-  },
-  listContainer: {
-    paddingTop: 10,
-  },
-  listText: {
-    fontStyle: 'normal',
-    fontWeight: 'normal',
-    fontSize: 14,
-    lineHeight: 20,
-
-    letterSpacing: 0.25,
-
-    color: 'rgba(114, 45, 211, 0.87)',
-    paddingLeft: 20,
-  },
-  list: {
-    height: 40,
-    borderBottomWidth: 0,
-  },
-  listPadding: {
-    height: 40,
-    borderBottomWidth: 0,
-    marginLeft: 45,
-  },
-  icon: {
-    // scaleX: 0.8,
-    // scaleY: 0.8,
-    color: 'rgba(114, 45, 211, 0.87)',
-  },
-});
 
 export default NavigationDrawer;

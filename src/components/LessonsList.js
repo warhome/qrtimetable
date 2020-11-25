@@ -1,5 +1,6 @@
 import React from 'react';
 import {Container, Content, List} from 'native-base';
+import {useTheme} from '@react-navigation/native';
 
 import Card from './LessonCard';
 
@@ -23,8 +24,9 @@ const isActiveLessonTime = (currentTime, lessonTime) => {
   return false;
 };
 const LessonsList = ({dayLessons, weekMod, currentTime, isCurrentDayWeek}) => {
+  const {colors} = useTheme();
   return (
-    <Container>
+    <Container style={{backgroundColor: colors.back}}>
       <Content>
         <List>
           {dayLessons &&
