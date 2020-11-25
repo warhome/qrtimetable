@@ -1,5 +1,4 @@
 package com.qrtimetable;
-
 import com.facebook.react.ReactActivity;
 
 import android.os.Bundle; // here

@@ -1,10 +1,8 @@
 import React from 'react';
-import {StatusBar} from 'react-native';
 import {StyleSheet} from 'react-native';
 import {useTheme} from '@react-navigation/native';
 import LessonsList from '../components/LessonsList';
 import MainAppBar from '../components/AppBar';
-
 import {Container, Tab, Tabs, ScrollableTab, Text} from 'native-base';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -75,8 +73,6 @@ const Main = ({navigation}) => {
       backgroundColor: colors.back,
     },
   });
-  StatusBar.setBarStyle('light-content', true);
-  StatusBar.setBackgroundColor('red');
   // TODO: Async storage with onChange listener (StorageFacade)
   // [storageFacade, setStorageFacade] = React.useState(null);
   const getSelectedTimetable = async () => {
@@ -128,7 +124,10 @@ const Main = ({navigation}) => {
             underlineStyle={styles.underLine}
           />
         )}
-        onChangeTab={({i}) => setCurrentTab(i)}
+        onChangeTab={({i}) => {
+          setCurrentTab(i);
+          StatusBar.setBackgroundColor('#2d2d2d');
+        }}
         page={currentTab === false ? Number(initTab) : currentTab}>
         {daysOfWeek.map((item, index) => {
           return (

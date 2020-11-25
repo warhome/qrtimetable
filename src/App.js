@@ -1,9 +1,9 @@
 import React from 'react';
-import {StatusBar} from 'react-native';
 import {AppearanceProvider, useColorScheme} from 'react-native-appearance';
 import SplashScreen from 'react-native-splash-screen';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
+import {StyleSheet, SafeAreaView} from 'react-native';
 
 import Main from './screens/Main';
 import HomeScreen from './screens/HomeScreen';
@@ -19,7 +19,6 @@ function App() {
   // Show splash screen when App is first time render
   React.useEffect(() => {
     SplashScreen.hide();
-    StatusBar.setHidden(true);
   });
   // Get system color scheme
   const scheme = useColorScheme();
@@ -41,5 +40,16 @@ function App() {
     </AppearanceProvider>
   );
 }
+
+const styles = StyleSheet.create({
+  topSafeArea: {
+    flex: 0,
+    backgroundColor: '#2d2d2d',
+  },
+  bottomSafeArea: {
+    flex: 1,
+    backgroundColor: '#2d2d2d',
+  },
+});
 
 export default App;
