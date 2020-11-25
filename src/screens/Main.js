@@ -126,7 +126,6 @@ const Main = ({navigation}) => {
         )}
         onChangeTab={({i}) => {
           setCurrentTab(i);
-          StatusBar.setBackgroundColor('#2d2d2d');
         }}
         page={currentTab === false ? Number(initTab) : currentTab}>
         {daysOfWeek.map((item, index) => {
