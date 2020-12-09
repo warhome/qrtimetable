@@ -10,7 +10,7 @@ Built in react-native.
 - Dark mode :sunglasses: (✓)
 
 ## Json example
-  "id": 123456,
+```json "id": 123456,
   "madeBy": "admin",
   "lessons": {
     "Понедельник": [],
@@ -65,7 +65,7 @@ Built in react-native.
       },
     ]
   }
-}
+} ```
 
 ## How to install
 You can always find the latest apk build for android <a href="https://github.com/warhome/qrtimetable/raw/master/android/app/build/outputs/apk/release/app-release.apk">from this link</a>
