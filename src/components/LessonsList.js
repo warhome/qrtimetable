@@ -21,8 +21,13 @@ const isActiveLessonTime = (currentTime, lessonTime) => {
     else return false;
   }
 
+  if (Number(currentTime.hours) === Number(lessonHoursEnd)) {
+    if (Number(currentTime.min) <= Number(lessonMinEnd)) return true;
+    else return false;
+  }
   return false;
 };
+
 const LessonsList = ({dayLessons, weekMod, currentTime, isCurrentDayWeek}) => {
   const {colors} = useTheme();
   return (

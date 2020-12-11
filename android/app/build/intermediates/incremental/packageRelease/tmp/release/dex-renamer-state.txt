@@ -1,4 +1,4 @@
-#Thu Nov 26 01:42:28 MSK 2020
+#Tue Dec 01 20:36:51 MSK 2020
 base.0=C\:\\web\\qrtimetable\\android\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\out\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

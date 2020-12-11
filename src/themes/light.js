@@ -5,10 +5,10 @@ const QrLight = {
   colors: {
     ...DefaultTheme.colors,
     back: '#FFFFFF',
-    backLight: '#FFFFFF',
+    backLight: '#FAFAFA',
     backDark: '#FAFAFA',
-    accent: '#B04DFE',
-    text: '#B04DFE',
+    accent: '#C787FA',
+    text: '#C787FA',
     header: '#FFFFFF',
     textUnactive: '#535353',
   },
